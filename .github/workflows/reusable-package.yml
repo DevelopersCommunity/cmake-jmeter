@@ -9,7 +9,7 @@ jobs:
       - name: Install Ninja
         run: choco install ninja
       - name: Generate Ninja build
-        run: cmake -B build -G Ninja -D CMAKE_BUILD_TYPE=RelWithDebInfo -D CMAKE_C_COMPILER=clang
+        run: cmake -B build -G Ninja
       - name: Package
         run: cmake --build build --target package
       - uses: actions/upload-artifact@v3
