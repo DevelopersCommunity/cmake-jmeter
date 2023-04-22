@@ -36,19 +36,11 @@ Start-Process `
     -Verb RunAs
 ```
 
-Update your path environment with `setx` (supposing you installed the tools in
-their default directories):
-
-```powershell
-setx PATH ($(Get-ItemProperty -Path HKCU:\Environment -Name Path).Path + "${env:ProgramFiles(x86)}\WiX Toolset v3.11\bin")
-```
-
 Check if `PATH` was set correctly:
 
 ```
 Get-Command cmake
 Get-Command ninja
-Get-Command candle
 ```
 
 You may need to restart your Windows session if you can't find `ninja` even
