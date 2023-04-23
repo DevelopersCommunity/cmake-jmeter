@@ -20,6 +20,22 @@ if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/${JMETER_TARBALL})
     )
 endif()
 
+if(WIN32)
+  set(JMETER_LOGO jmeter.svg)
+  if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/${JMETER_LOGO})
+    file(DOWNLOAD https://svn.apache.org/repos/asf/comdev/project-logos/originals/${JMETER_LOGO}
+      ${CMAKE_CURRENT_LIST_DIR}/${JMETER_LOGO}
+      )
+  endif()
+
+  add_custom_command(OUTPUT jmeter.ico
+    COMMAND magick ${CMAKE_CURRENT_LIST_DIR}/${JMETER_LOGO} -gravity Center -extent 256x256 jmeter.ico
+    MAIN_DEPENDENCY ${CMAKE_CURRENT_LIST_DIR}/${JMETER_LOGO}
+    COMMENT "Generating JMeter icon"
+    )
+  add_custom_target(jmetericon ALL DEPENDS jmeter.ico)
+endif()
+
 set(JMETER_DIR ${CMAKE_CURRENT_LIST_DIR}/apache-jmeter-${CMAKE_PROJECT_VERSION})
 
 install(FILES
@@ -83,6 +99,7 @@ if(WIN32)
   set(CPACK_GENERATOR WIX)
   set(CPACK_WIX_UPGRADE_GUID "5859d326-2961-4596-870e-d8bf7c35b2c3")
   set(CPACK_WIX_PROGRAM_MENU_FOLDER "${CPACK_PACKAGE_NAME}")
+  set(CPACK_WIX_PRODUCT_ICON jmeter.ico)
   list(APPEND CPACK_WIX_EXTENSIONS WixUtilExtension)
   list(APPEND CPACK_WIX_PATCH_FILE ${CMAKE_CURRENT_LIST_DIR}/WixPatch.xml)
 endif()

@@ -14,3 +14,4 @@ build/
 install/
 apache-jmeter-*/
 *.zip
+jmeter.svg
