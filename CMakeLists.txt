@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26)
-set(JMETER_VERSION 5.5)
+set(JMETER_VERSION 5.6)
 project(JMeter
   VERSION ${JMETER_VERSION}
   DESCRIPTION "Apache JMeter packaged by DEVCOM"
@@ -8,7 +8,7 @@ project(JMeter
   )
 
 set(JMETER_TARBALL apache-jmeter-${CMAKE_PROJECT_VERSION}.zip)
-set(JMETER_TARBALL_SHA512 b24cdaa57234153df34a40bdc4501aa16f3286ca3e172eb889a5daa0ded86ab51388af1ea56e756df566a6f74f39f80eceb04e5d559668aeac9ec9759d6445ac)
+set(JMETER_TARBALL_SHA512 c9887eb821ae7381b8d1f90aca93560bb6c8c5294ad7e9c615dbed0e2bd5556afdb68134a63c9aa07f4a54d07fb6281930a68f98e1f9359a79af70d99ccbe59e)
 
 if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/${JMETER_TARBALL})
   file(DOWNLOAD https://dlcdn.apache.org//jmeter/binaries/${JMETER_TARBALL}
@@ -45,15 +45,16 @@ install(FILES
   ${JMETER_DIR}/bin/BeanShellListeners.bshrc
   ${JMETER_DIR}/bin/BeanShellSampler.bshrc
   ${JMETER_DIR}/bin/hc.parameters
+  ${JMETER_DIR}/bin/jaas.conf
   ${JMETER_DIR}/bin/jmeter.properties
   ${JMETER_DIR}/bin/krb5.conf
-  ${JMETER_DIR}/bin/jaas.conf
   ${JMETER_DIR}/bin/log4j2.xml
   ${JMETER_DIR}/bin/reportgenerator.properties
   ${JMETER_DIR}/bin/saveservice.properties
   ${JMETER_DIR}/bin/system.properties
   ${JMETER_DIR}/bin/upgrade.properties
   ${JMETER_DIR}/bin/user.properties
+  ${JMETER_DIR}/bin/upgrade.properties
   ${JMETER_DIR}/bin/utility.groovy
   DESTINATION bin
   )
@@ -64,13 +65,13 @@ install(PROGRAMS
   ${JMETER_DIR}/bin/heapdump.cmd
   ${JMETER_DIR}/bin/heapdump.sh
   ${JMETER_DIR}/bin/jmeter
-  ${JMETER_DIR}/bin/jmeter-n-r.cmd
+  ${JMETER_DIR}/bin/jmeter.bat
+  ${JMETER_DIR}/bin/jmeter.sh
   ${JMETER_DIR}/bin/jmeter-n.cmd
+  ${JMETER_DIR}/bin/jmeter-n-r.cmd
   ${JMETER_DIR}/bin/jmeter-server
   ${JMETER_DIR}/bin/jmeter-server.bat
   ${JMETER_DIR}/bin/jmeter-t.cmd
-  ${JMETER_DIR}/bin/jmeter.bat
-  ${JMETER_DIR}/bin/jmeter.sh
   ${JMETER_DIR}/bin/jmeterw.cmd
   ${JMETER_DIR}/bin/mirror-server
   ${JMETER_DIR}/bin/mirror-server.cmd
