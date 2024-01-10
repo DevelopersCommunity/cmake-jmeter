@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.26)
-set(JMETER_VERSION 5.6.1)
+set(JMETER_VERSION 5.6.3)
 project(JMeter
   VERSION ${JMETER_VERSION}
   DESCRIPTION "Apache JMeter packaged by DEVCOM"
@@ -8,7 +8,7 @@ project(JMeter
   )
 
 set(JMETER_TARBALL apache-jmeter-${CMAKE_PROJECT_VERSION}.zip)
-set(JMETER_TARBALL_SHA512 87f1314b09721ad25912092d4d599b1152f29cc4a959398cc1cb3d4fb683c7f31c76829d78a2ade2482e1993c3b4e6e34eee0bee777a00d61ea747b1e628a050)
+set(JMETER_TARBALL_SHA512 387fadca903ee0aa30e3f2115fdfedb3898b102e6b9fe7cc3942703094bd2e65b235df2b0c6d0d3248e74c9a7950a36e42625fd74425368342c12e40b0163076)
 
 if(NOT EXISTS ${CMAKE_CURRENT_LIST_DIR}/${JMETER_TARBALL})
   file(DOWNLOAD https://dlcdn.apache.org//jmeter/binaries/${JMETER_TARBALL}
@@ -54,7 +54,6 @@ install(FILES
   ${JMETER_DIR}/bin/system.properties
   ${JMETER_DIR}/bin/upgrade.properties
   ${JMETER_DIR}/bin/user.properties
-  ${JMETER_DIR}/bin/upgrade.properties
   ${JMETER_DIR}/bin/utility.groovy
   DESTINATION bin
   )
